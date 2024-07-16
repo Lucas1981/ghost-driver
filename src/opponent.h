@@ -6,20 +6,24 @@
 #include "graphics.h"
 #include "spritesheet.h"
 #include "clock.h"
+#include <random>
 
 class Opponent : public Agent {
 public:
     Opponent(SDL_Renderer* renderer, SpriteSheet* spriteSheet, Clock* clock);
     ~Opponent();
     void update() override;
-    void draw(Graphics& graphics, int offset_x, int offset_y) override;
+    void draw(Graphics& graphics) override;
 
 private:
     SDL_Renderer* renderer;
     SpriteSheet* spriteSheet;
     Clock* clock;  // Store the clock object as a private member
 
-    int get_random_x();
+    static std::mt19937 gen; // Random number generator
+    static std::uniform_int_distribution<> dis; // Distribution for x coordinate
+
+    static int get_random_x();
 };
 
 #endif // OPPONENT_H

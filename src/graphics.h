@@ -9,8 +9,9 @@ public:
     Graphics();
     ~Graphics();
     bool initialize();
-    void clear();
-    void present(int offset_x, int offset_y);
+    void resetRendition();
+    void scrollSlice(int offset_x, int offset_y);
+    void present();
     void drawSquare(int x, int y, int size, SDL_Color outlineColor, SDL_Color fillColor);
     void drawRect(int x, int y, int width, int height, SDL_Color outlineColor, SDL_Color fillColor);
     void drawTexture(int x, int y, int size, TextureSlice slice);

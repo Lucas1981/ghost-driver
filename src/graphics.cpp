@@ -44,20 +44,26 @@ bool Graphics::initialize() {
     return true;
 }
 
-void Graphics::clear() {
+void Graphics::resetRendition() {
     SDL_SetRenderTarget(renderer, offCanvasTexture);
-    SDL_SetRenderDrawColor(renderer, 0x00, 0x00, 0x00, 0xFF);
-    SDL_RenderClear(renderer);
 }
 
-void Graphics::present(int offset_x, int offset_y) {
+void Graphics::scrollSlice(int offset_x, int offset_y) {
     SDL_SetRenderTarget(renderer, nullptr);
 
     SDL_Rect srcRect = { offset_x, offset_y, screenWidth, screenHeight };
     SDL_Rect dstRect = { 0, 0, screenWidth, screenHeight };
 
     SDL_RenderCopy(renderer, offCanvasTexture, &srcRect, &dstRect);
+}
+
+void Graphics::present() {
     SDL_RenderPresent(renderer);
+}
+
+void Graphics::drawTexture(int x, int y, int size, TextureSlice slice) {
+    SDL_Rect dstRect = { x, y, size, size };
+    SDL_RenderCopy(renderer, slice.texture, &slice.rect, &dstRect);
 }
 
 void Graphics::drawSquare(int x, int y, int size, SDL_Color outlineColor, SDL_Color fillColor) {
@@ -76,11 +82,6 @@ void Graphics::drawRect(int x, int y, int width, int height, SDL_Color outlineCo
 
     SDL_SetRenderDrawColor(renderer, outlineColor.r, outlineColor.g, outlineColor.b, outlineColor.a);
     SDL_RenderDrawRect(renderer, &fillRect); 
-}
-
-void Graphics::drawTexture(int x, int y, int size, TextureSlice slice) {
-    SDL_Rect dstRect = { x, y, size, size };
-    SDL_RenderCopy(renderer, slice.texture, &slice.rect, &dstRect);
 }
 
 SDL_Renderer* Graphics::getRenderer() const {

@@ -3,10 +3,24 @@
 #include <cmath> // Include the cmath header for std::fmod
 #include <iostream>
 
-GameLoop::GameLoop() : isRunning(true), gameState(GameState::TITLE_SCREEN), offset_x(32.0), offset_y(0.0), create_opponent_timer(0.0) {}
+GameLoop::GameLoop() : gameState(GameState::TITLE_SCREEN), offset_x(32.0), offset_y(0.0), create_opponent_timer(0.0) {}
 
 GameLoop::~GameLoop() {
     cleanup();
+}
+
+void GameLoop::run() {
+    if (!initialize()) {
+        std::cerr << "Failed to initialize!" << std::endl;
+        return;
+    }
+
+    while (!input.shouldQuit()) {
+        clock.setTimer();
+        input.update();
+        update();
+        render();
+    }
 }
 
 bool GameLoop::initialize() {
@@ -28,25 +42,7 @@ bool GameLoop::initialize() {
     return true;
 }
 
-void GameLoop::handleEvents() {
-    SDL_Event e;
-    input.beginNewFrame();
-    while (SDL_PollEvent(&e) != 0) {
-        if (e.type == SDL_QUIT) {
-            isRunning = false;
-        } else if (e.type == SDL_KEYDOWN) {
-            if (e.key.keysym.scancode == SDL_SCANCODE_ESCAPE) {
-                isRunning = false;
-            }
-            input.keyDownEvent(e);
-        } else if (e.type == SDL_KEYUP) {
-            input.keyUpEvent(e);
-        }
-    }
-}
-
 void GameLoop::update() {
-    clock.setTimer();
     double elapsedTime = clock.getElapsedTime();
 
     create_opponent_timer += elapsedTime;
@@ -95,14 +91,21 @@ void GameLoop::update() {
 }
 
 void GameLoop::render() {
-    graphics.clear();
+    // Clear off-screen canvas
+    graphics.resetRendition();
+
+    // Draw the grid on the off-screen canvas
     grid->drawGrid(graphics, *spriteSheet);
 
+    // Copy a slice of the off-screen canvas back to itself to simulate scrolling
+    graphics.scrollSlice((int)offset_x, (int)offset_y);
+
+    // Draw all agents on the off-screen canvas
     for (auto agent : agents) {
-        agent->draw(graphics, (int)offset_x, (int)offset_y);
+        agent->draw(graphics); // No offset needed
     }
 
-    graphics.present((int)offset_x, (int)offset_y);
+    graphics.present();
 }
 
 void GameLoop::cleanup() {
@@ -110,18 +113,5 @@ void GameLoop::cleanup() {
     delete grid;
     for (auto agent : agents) {
         delete agent;
-    }
-}
-
-void GameLoop::run() {
-    if (!initialize()) {
-        std::cerr << "Failed to initialize!" << std::endl;
-        return;
-    }
-
-    while (isRunning) {
-        handleEvents();
-        update();
-        render();
     }
 }

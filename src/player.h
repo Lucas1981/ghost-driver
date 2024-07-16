@@ -13,7 +13,7 @@ public:
     Player(SDL_Renderer* renderer, SpriteSheet* spriteSheet, Input* input, Clock* clock);
     ~Player();
     void update() override;
-    void draw(Graphics& graphics, int offset_x, int offset_y) override;
+    void draw(Graphics& graphics) override;
 
 private:
     SDL_Renderer* renderer;

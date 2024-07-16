@@ -2,6 +2,10 @@
 #include <iostream>
 #include <random> // Include the random header
 
+// Define and initialize static members
+std::mt19937 Opponent::gen(std::random_device{}());
+std::uniform_int_distribution<> Opponent::dis((2 * 64) + 16, 640 - (4 * 64) + 48);
+
 Opponent::Opponent(SDL_Renderer* renderer, SpriteSheet* spriteSheet, Clock* clock)
     : renderer(renderer), spriteSheet(spriteSheet), clock(clock) {
     x = get_random_x();
@@ -16,9 +20,6 @@ Opponent::~Opponent() {
 }
 
 int Opponent::get_random_x() {
-    std::random_device rd; // Random device for seeding
-    std::mt19937 gen(rd()); // Mersenne Twister RNG
-    std::uniform_int_distribution<> dis((2 * 64) + 16, 640 - (4 * 64) + 48); // Uniform distribution for x coordinate
     return dis(gen);
 }
 
@@ -34,7 +35,7 @@ void Opponent::update() {
     }
 }
 
-void Opponent::draw(Graphics& graphics, int offset_x, int offset_y) {
+void Opponent::draw(Graphics& graphics) {
     TextureSlice slice = spriteSheet->getTextureSlice(TextureType::OPPONENT);  // Assuming TextureType::CAR is defined
-    graphics.drawTexture(x + offset_x, y + offset_y, 64, slice);  // Draw the opponent using the spritesheet
+    graphics.drawTexture(x, y, 64, slice);  // Draw the opponent using the spritesheet
 }

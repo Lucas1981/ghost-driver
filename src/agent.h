@@ -18,7 +18,7 @@ class Agent {
 public:
     virtual ~Agent() {}
     virtual void update() = 0;
-    virtual void draw(Graphics& graphics, int offset_x, int offset_y) = 0;
+    virtual void draw(Graphics& graphics) = 0;
 
     bool is_alive() const { return state == State::ALIVE; }
     bool is_player() const { return type == Type::PLAYER; }

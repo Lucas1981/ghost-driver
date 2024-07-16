@@ -24,12 +24,10 @@ public:
 
 private:
     bool initialize();
-    void handleEvents();
     void update();
     void render();
     void cleanup();
 
-    bool isRunning;
     GameState gameState;
     Graphics graphics;
     double offset_x;

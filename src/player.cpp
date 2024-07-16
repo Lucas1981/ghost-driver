@@ -32,7 +32,7 @@ void Player::update() {
     }
 }
 
-void Player::draw(Graphics& graphics, int offset_x, int offset_y) {
+void Player::draw(Graphics& graphics) {
     TextureSlice slice = spriteSheet->getTextureSlice(TextureType::CAR);  // Assuming TextureType::CAR is defined
-    graphics.drawTexture(x + offset_x, y + offset_y, 64, slice);  // Draw the player using the spritesheet
+    graphics.drawTexture(x, y, 64, slice);  // Draw the player using the spritesheet
 }
