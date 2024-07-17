@@ -10,7 +10,7 @@ cmake ..
 cmake --build .
 
 # Run the game
-./MyGame
+./GhostDriver
 
 # Return to root dir
 cd ..

@@ -20,7 +20,7 @@ message(STATUS "SDL2 include dirs: ${SDL2_INCLUDE_DIRS}")
 message(STATUS "SDL2_image include dirs: ${SDL2_IMAGE_INCLUDE_DIRS}")
 
 # Add the executable
-add_executable(MyGame 
+add_executable(GhostDriver 
     src/main.cpp 
     src/game-loop.cpp 
     src/graphics.cpp 
@@ -35,7 +35,7 @@ add_executable(MyGame
 )
 
 # Link SDL2 and SDL2_image
-target_link_libraries(MyGame ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES})
+target_link_libraries(GhostDriver ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES})
 
 # Explicitly add include directories
-target_include_directories(MyGame PRIVATE ${SDL2_INCLUDE_DIRS} ${SDL2_IMAGE_INCLUDE_DIRS})
+target_include_directories(GhostDriver PRIVATE ${SDL2_INCLUDE_DIRS} ${SDL2_IMAGE_INCLUDE_DIRS})
