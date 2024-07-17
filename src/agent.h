@@ -20,9 +20,9 @@ public:
     virtual void update() = 0;
     virtual void draw(Graphics& graphics) = 0;
 
-    bool is_alive() const { return state == State::ALIVE; }
-    bool is_player() const { return type == Type::PLAYER; }
-    SDL_Rect get_translated_hitbox() const; // Method to get translated hitbox
+    bool isAlive() const { return state == State::ALIVE; }
+    bool isPlayer() const { return type == Type::PLAYER; }
+    SDL_Rect getTranslatedHitbox() const; // Method to get translated hitbox
 
 protected:
     int x, y;

@@ -10,7 +10,7 @@ public:
     ~Graphics();
     bool initialize();
     void resetRendition();
-    void scrollSlice(int offset_x, int offset_y);
+    void scrollSlice(int offsetX, int offsetY);
     void present();
     void drawSquare(int x, int y, int size, SDL_Color outlineColor, SDL_Color fillColor);
     void drawRect(int x, int y, int width, int height, SDL_Color outlineColor, SDL_Color fillColor);

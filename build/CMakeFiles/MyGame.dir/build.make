@@ -83,19 +83,19 @@ CMakeFiles/MyGame.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MyGame.dir/src/main.cpp.s"
 	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/lucasvanheerikhuizen/cpp/road-game/src/main.cpp -o CMakeFiles/MyGame.dir/src/main.cpp.s
 
-CMakeFiles/MyGame.dir/src/game_loop.cpp.o: CMakeFiles/MyGame.dir/flags.make
-CMakeFiles/MyGame.dir/src/game_loop.cpp.o: /Users/lucasvanheerikhuizen/cpp/road-game/src/game_loop.cpp
-CMakeFiles/MyGame.dir/src/game_loop.cpp.o: CMakeFiles/MyGame.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/lucasvanheerikhuizen/cpp/road-game/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/MyGame.dir/src/game_loop.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MyGame.dir/src/game_loop.cpp.o -MF CMakeFiles/MyGame.dir/src/game_loop.cpp.o.d -o CMakeFiles/MyGame.dir/src/game_loop.cpp.o -c /Users/lucasvanheerikhuizen/cpp/road-game/src/game_loop.cpp
+CMakeFiles/MyGame.dir/src/game-loop.cpp.o: CMakeFiles/MyGame.dir/flags.make
+CMakeFiles/MyGame.dir/src/game-loop.cpp.o: /Users/lucasvanheerikhuizen/cpp/road-game/src/game-loop.cpp
+CMakeFiles/MyGame.dir/src/game-loop.cpp.o: CMakeFiles/MyGame.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/lucasvanheerikhuizen/cpp/road-game/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/MyGame.dir/src/game-loop.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/MyGame.dir/src/game-loop.cpp.o -MF CMakeFiles/MyGame.dir/src/game-loop.cpp.o.d -o CMakeFiles/MyGame.dir/src/game-loop.cpp.o -c /Users/lucasvanheerikhuizen/cpp/road-game/src/game-loop.cpp
 
-CMakeFiles/MyGame.dir/src/game_loop.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MyGame.dir/src/game_loop.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/lucasvanheerikhuizen/cpp/road-game/src/game_loop.cpp > CMakeFiles/MyGame.dir/src/game_loop.cpp.i
+CMakeFiles/MyGame.dir/src/game-loop.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/MyGame.dir/src/game-loop.cpp.i"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/lucasvanheerikhuizen/cpp/road-game/src/game-loop.cpp > CMakeFiles/MyGame.dir/src/game-loop.cpp.i
 
-CMakeFiles/MyGame.dir/src/game_loop.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MyGame.dir/src/game_loop.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/lucasvanheerikhuizen/cpp/road-game/src/game_loop.cpp -o CMakeFiles/MyGame.dir/src/game_loop.cpp.s
+CMakeFiles/MyGame.dir/src/game-loop.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/MyGame.dir/src/game-loop.cpp.s"
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/lucasvanheerikhuizen/cpp/road-game/src/game-loop.cpp -o CMakeFiles/MyGame.dir/src/game-loop.cpp.s
 
 CMakeFiles/MyGame.dir/src/graphics.cpp.o: CMakeFiles/MyGame.dir/flags.make
 CMakeFiles/MyGame.dir/src/graphics.cpp.o: /Users/lucasvanheerikhuizen/cpp/road-game/src/graphics.cpp
@@ -226,7 +226,7 @@ CMakeFiles/MyGame.dir/src/collision.cpp.s: cmake_force
 # Object files for target MyGame
 MyGame_OBJECTS = \
 "CMakeFiles/MyGame.dir/src/main.cpp.o" \
-"CMakeFiles/MyGame.dir/src/game_loop.cpp.o" \
+"CMakeFiles/MyGame.dir/src/game-loop.cpp.o" \
 "CMakeFiles/MyGame.dir/src/graphics.cpp.o" \
 "CMakeFiles/MyGame.dir/src/clock.cpp.o" \
 "CMakeFiles/MyGame.dir/src/spritesheet.cpp.o" \
@@ -241,7 +241,7 @@ MyGame_OBJECTS = \
 MyGame_EXTERNAL_OBJECTS =
 
 MyGame: CMakeFiles/MyGame.dir/src/main.cpp.o
-MyGame: CMakeFiles/MyGame.dir/src/game_loop.cpp.o
+MyGame: CMakeFiles/MyGame.dir/src/game-loop.cpp.o
 MyGame: CMakeFiles/MyGame.dir/src/graphics.cpp.o
 MyGame: CMakeFiles/MyGame.dir/src/clock.cpp.o
 MyGame: CMakeFiles/MyGame.dir/src/spritesheet.cpp.o

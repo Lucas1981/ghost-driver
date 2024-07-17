@@ -8,7 +8,7 @@ std::uniform_int_distribution<> Opponent::dis((2 * 64) + 16, 640 - (4 * 64) + 48
 
 Opponent::Opponent(SDL_Renderer* renderer, SpriteSheet* spriteSheet, Clock* clock)
     : renderer(renderer), spriteSheet(spriteSheet), clock(clock) {
-    x = get_random_x();
+    x = getRandomX();
     y = -64;
     state = State::ALIVE;
     type = Type::OPPONENT;
@@ -19,7 +19,7 @@ Opponent::~Opponent() {
     // No need to destroy the spriteSheet since it is not owned by Opponent
 }
 
-int Opponent::get_random_x() {
+int Opponent::getRandomX() {
     return dis(gen);
 }
 

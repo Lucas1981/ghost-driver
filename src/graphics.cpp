@@ -48,10 +48,10 @@ void Graphics::resetRendition() {
     SDL_SetRenderTarget(renderer, offCanvasTexture);
 }
 
-void Graphics::scrollSlice(int offset_x, int offset_y) {
+void Graphics::scrollSlice(int offsetX, int offsetY) {
     SDL_SetRenderTarget(renderer, nullptr);
 
-    SDL_Rect srcRect = { offset_x, offset_y, screenWidth, screenHeight };
+    SDL_Rect srcRect = { offsetX, offsetY, screenWidth, screenHeight };
     SDL_Rect dstRect = { 0, 0, screenWidth, screenHeight };
 
     SDL_RenderCopy(renderer, offCanvasTexture, &srcRect, &dstRect);

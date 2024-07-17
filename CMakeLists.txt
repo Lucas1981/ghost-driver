@@ -22,7 +22,7 @@ message(STATUS "SDL2_image include dirs: ${SDL2_IMAGE_INCLUDE_DIRS}")
 # Add the executable
 add_executable(MyGame 
     src/main.cpp 
-    src/game_loop.cpp 
+    src/game-loop.cpp 
     src/graphics.cpp 
     src/clock.cpp 
     src/spritesheet.cpp 

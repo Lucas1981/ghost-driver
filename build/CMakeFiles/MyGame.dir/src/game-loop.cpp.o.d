@@ -1,6 +1,6 @@
-CMakeFiles/MyGame.dir/src/game_loop.cpp.o: \
-  /Users/lucasvanheerikhuizen/cpp/road-game/src/game_loop.cpp \
-  /Users/lucasvanheerikhuizen/cpp/road-game/src/game_loop.h \
+CMakeFiles/MyGame.dir/src/game-loop.cpp.o: \
+  /Users/lucasvanheerikhuizen/cpp/road-game/src/game-loop.cpp \
+  /Users/lucasvanheerikhuizen/cpp/road-game/src/game-loop.h \
   /opt/homebrew/Cellar/sdl2/2.30.5/include/SDL2/SDL.h \
   /opt/homebrew/Cellar/sdl2/2.30.5/include/SDL2/SDL_main.h \
   /opt/homebrew/Cellar/sdl2/2.30.5/include/SDL2/SDL_stdinc.h \

@@ -11,7 +11,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/lucasvanheerikhuizen/cpp/road-game/src/agent.cpp" "CMakeFiles/MyGame.dir/src/agent.cpp.o" "gcc" "CMakeFiles/MyGame.dir/src/agent.cpp.o.d"
   "/Users/lucasvanheerikhuizen/cpp/road-game/src/clock.cpp" "CMakeFiles/MyGame.dir/src/clock.cpp.o" "gcc" "CMakeFiles/MyGame.dir/src/clock.cpp.o.d"
   "/Users/lucasvanheerikhuizen/cpp/road-game/src/collision.cpp" "CMakeFiles/MyGame.dir/src/collision.cpp.o" "gcc" "CMakeFiles/MyGame.dir/src/collision.cpp.o.d"
-  "/Users/lucasvanheerikhuizen/cpp/road-game/src/game_loop.cpp" "CMakeFiles/MyGame.dir/src/game_loop.cpp.o" "gcc" "CMakeFiles/MyGame.dir/src/game_loop.cpp.o.d"
+  "/Users/lucasvanheerikhuizen/cpp/road-game/src/game-loop.cpp" "CMakeFiles/MyGame.dir/src/game-loop.cpp.o" "gcc" "CMakeFiles/MyGame.dir/src/game-loop.cpp.o.d"
   "/Users/lucasvanheerikhuizen/cpp/road-game/src/graphics.cpp" "CMakeFiles/MyGame.dir/src/graphics.cpp.o" "gcc" "CMakeFiles/MyGame.dir/src/graphics.cpp.o.d"
   "/Users/lucasvanheerikhuizen/cpp/road-game/src/grid.cpp" "CMakeFiles/MyGame.dir/src/grid.cpp.o" "gcc" "CMakeFiles/MyGame.dir/src/grid.cpp.o.d"
   "/Users/lucasvanheerikhuizen/cpp/road-game/src/input.cpp" "CMakeFiles/MyGame.dir/src/input.cpp.o" "gcc" "CMakeFiles/MyGame.dir/src/input.cpp.o.d"

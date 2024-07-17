@@ -30,8 +30,8 @@ private:
 
     GameState gameState;
     Graphics graphics;
-    double offset_x;
-    double offset_y;
+    double offsetX;
+    double offsetY;
     Clock clock;
     SpriteSheet* spriteSheet;
     Grid* grid;
@@ -39,7 +39,7 @@ private:
     Input input;
     std::list<Agent*> agents;  // Use a list to store agents
 
-    double create_opponent_timer; // Timer for creating new opponents
+    double createOpponentTimer; // Timer for creating new opponents
 };
 
 #endif // GAME_LOOP_H

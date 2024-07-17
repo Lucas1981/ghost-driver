@@ -14,7 +14,6 @@ My challenge was to have a scrolling background. The objective will be pretty si
     - CRASHED
     - LOST
     - WON
-- [ ] Refactor into game & loop
 - [ ] Add UI
 - [ ] Add timer
 - [ ] Add sounds

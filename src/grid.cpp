@@ -2,7 +2,8 @@
 #include <fstream>
 #include <iostream>
 
-Grid::Grid(const std::string& filePath) : filePath(filePath) {}
+Grid::Grid(const std::string& filePath, Graphics& graphics, SpriteSheet& spriteSheet)
+    : filePath(filePath), graphics(graphics), spriteSheet(spriteSheet) {}
 
 bool Grid::loadGrid() {
     std::ifstream file(filePath);

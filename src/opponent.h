@@ -23,7 +23,7 @@ private:
     static std::mt19937 gen; // Random number generator
     static std::uniform_int_distribution<> dis; // Distribution for x coordinate
 
-    static int get_random_x();
+    static int getRandomX();
 };
 
 #endif // OPPONENT_H

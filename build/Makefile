@@ -201,29 +201,29 @@ src/collision.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/src/collision.cpp.s
 .PHONY : src/collision.cpp.s
 
-src/game_loop.o: src/game_loop.cpp.o
-.PHONY : src/game_loop.o
+src/game-loop.o: src/game-loop.cpp.o
+.PHONY : src/game-loop.o
 
 # target to build an object file
-src/game_loop.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/src/game_loop.cpp.o
-.PHONY : src/game_loop.cpp.o
+src/game-loop.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/src/game-loop.cpp.o
+.PHONY : src/game-loop.cpp.o
 
-src/game_loop.i: src/game_loop.cpp.i
-.PHONY : src/game_loop.i
+src/game-loop.i: src/game-loop.cpp.i
+.PHONY : src/game-loop.i
 
 # target to preprocess a source file
-src/game_loop.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/src/game_loop.cpp.i
-.PHONY : src/game_loop.cpp.i
+src/game-loop.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/src/game-loop.cpp.i
+.PHONY : src/game-loop.cpp.i
 
-src/game_loop.s: src/game_loop.cpp.s
-.PHONY : src/game_loop.s
+src/game-loop.s: src/game-loop.cpp.s
+.PHONY : src/game-loop.s
 
 # target to generate assembly for a file
-src/game_loop.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/src/game_loop.cpp.s
-.PHONY : src/game_loop.cpp.s
+src/game-loop.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/MyGame.dir/build.make CMakeFiles/MyGame.dir/src/game-loop.cpp.s
+.PHONY : src/game-loop.cpp.s
 
 src/graphics.o: src/graphics.cpp.o
 .PHONY : src/graphics.o
@@ -411,9 +411,9 @@ help:
 	@echo "... src/collision.o"
 	@echo "... src/collision.i"
 	@echo "... src/collision.s"
-	@echo "... src/game_loop.o"
-	@echo "... src/game_loop.i"
-	@echo "... src/game_loop.s"
+	@echo "... src/game-loop.o"
+	@echo "... src/game-loop.i"
+	@echo "... src/game-loop.s"
 	@echo "... src/graphics.o"
 	@echo "... src/graphics.i"
 	@echo "... src/graphics.s"

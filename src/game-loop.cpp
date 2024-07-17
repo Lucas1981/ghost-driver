@@ -1,9 +1,9 @@
-#include "game_loop.h"
+#include "game-loop.h"
 #include "collision.h"
 #include <cmath> // Include the cmath header for std::fmod
 #include <iostream>
 
-GameLoop::GameLoop() : gameState(GameState::TITLE_SCREEN), offset_x(32.0), offset_y(0.0), create_opponent_timer(0.0) {}
+GameLoop::GameLoop() : gameState(GameState::TITLE_SCREEN), offsetX(32.0), offsetY(0.0), createOpponentTimer(0.0) {}
 
 GameLoop::~GameLoop() {
     cleanup();
@@ -34,7 +34,7 @@ bool GameLoop::initialize() {
     // Add a single opponent
     agents.push_back(new Opponent(graphics.getRenderer(), spriteSheet, &clock));
     
-    grid = new Grid("../assets/grid.txt");  // Initialize Grid with file path
+    grid = new Grid("../assets/grid.txt", graphics, *spriteSheet);  // Initialize Grid with file path
     if (!grid->loadGrid()) {
         std::cerr << "Failed to load grid!" << std::endl;
         return false;
@@ -45,12 +45,12 @@ bool GameLoop::initialize() {
 void GameLoop::update() {
     double elapsedTime = clock.getElapsedTime();
 
-    create_opponent_timer += elapsedTime;
+    createOpponentTimer += elapsedTime;
 
     // Add a new opponent every 300 ms
-    if (create_opponent_timer >= 0.3) {
+    if (createOpponentTimer >= 0.3) {
         agents.push_back(new Opponent(graphics.getRenderer(), spriteSheet, &clock));
-        create_opponent_timer = 0.0; // Reset the timer
+        createOpponentTimer = 0.0; // Reset the timer
     }
 
     for (auto it = agents.begin(); it != agents.end(); ) {
@@ -58,7 +58,7 @@ void GameLoop::update() {
         agent->update();
         
         // Check if the agent should be removed
-        if (!agent->is_alive() && !agent->is_player()) {
+        if (!agent->isAlive() && !agent->isPlayer()) {
             it = agents.erase(it); // Remove from list and get the next iterator
             delete agent; // Free the memory
         } else {
@@ -69,7 +69,7 @@ void GameLoop::update() {
    // Find the player agent
     Agent* player = nullptr;
     for (auto agent : agents) {
-        if (agent->is_player()) {
+        if (agent->isPlayer()) {
             player = agent;
             break;
         }
@@ -78,7 +78,7 @@ void GameLoop::update() {
     // Check for collisions between player and opponents
     if (player != nullptr) {
         for (auto agent : agents) {
-            if (!agent->is_player() && checkCollision(player, agent)) {
+            if (!agent->isPlayer() && checkCollision(player, agent)) {
                 std::cout << "Collision!" << std::endl;
             } else {
                 std::cout << std::endl;
@@ -87,7 +87,7 @@ void GameLoop::update() {
     }
 
     // Update game state
-    offset_y = std::fmod(offset_y + 64 - (256 * elapsedTime), 64);
+    offsetY = std::fmod(offsetY + 64 - (256 * elapsedTime), 64);
 }
 
 void GameLoop::render() {
@@ -98,7 +98,7 @@ void GameLoop::render() {
     grid->drawGrid(graphics, *spriteSheet);
 
     // Copy a slice of the off-screen canvas back to itself to simulate scrolling
-    graphics.scrollSlice((int)offset_x, (int)offset_y);
+    graphics.scrollSlice((int)offsetX, (int)offsetY);
 
     // Draw all agents on the off-screen canvas
     for (auto agent : agents) {
