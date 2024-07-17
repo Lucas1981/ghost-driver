@@ -6,12 +6,13 @@
 #include <SDL2/SDL.h>
 #include "graphics.h"
 #include "spritesheet.h"
+#include "constants.h"
 
 class Grid {
 public:
     Grid(const std::string& filePath, Graphics& graphics, SpriteSheet& spriteSheet);
     bool loadGrid();
-    void drawGrid(Graphics& graphics, SpriteSheet& spriteSheet);
+    void drawGrid();
 
 private:
     std::string filePath;

@@ -7,6 +7,7 @@
 #include "agent.h"
 #include "spritesheet.h"
 #include "clock.h"
+#include "constants.h"
 
 class Player : public Agent {
 public:
@@ -16,6 +17,12 @@ public:
     void draw(Graphics& graphics) override;
 
 private:
+    static const int LEFT_BOUND;
+    static const int RIGHT_BOUND;
+    static const int UPPER_BOUND;
+    static const int LOWER_BOUND;
+    static const int SPEED;
+
     SDL_Renderer* renderer;
     Input* input;  // Store the input object as a private member
     SpriteSheet* spriteSheet;  // Store the spritesheet object as a private member

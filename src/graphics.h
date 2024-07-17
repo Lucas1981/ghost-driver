@@ -3,6 +3,7 @@
 
 #include <SDL2/SDL.h>
 #include "spritesheet.h"
+#include "constants.h"
 
 class Graphics {
 public:

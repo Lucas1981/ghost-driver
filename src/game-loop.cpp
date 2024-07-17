@@ -3,6 +3,8 @@
 #include <cmath> // Include the cmath header for std::fmod
 #include <iostream>
 
+const int GameLoop::ROAD_SPEED = 256;
+
 GameLoop::GameLoop() : gameState(GameState::TITLE_SCREEN), offsetX(32.0), offsetY(0.0), createOpponentTimer(0.0) {}
 
 GameLoop::~GameLoop() {
@@ -30,10 +32,6 @@ bool GameLoop::initialize() {
     }
     spriteSheet = new SpriteSheet(graphics.getRenderer(), "../assets/tiles.png");
     agents.push_back(new Player(graphics.getRenderer(), spriteSheet, &input, &clock));
-
-    // Add a single opponent
-    agents.push_back(new Opponent(graphics.getRenderer(), spriteSheet, &clock));
-    
     grid = new Grid("../assets/grid.txt", graphics, *spriteSheet);  // Initialize Grid with file path
     if (!grid->loadGrid()) {
         std::cerr << "Failed to load grid!" << std::endl;
@@ -43,6 +41,8 @@ bool GameLoop::initialize() {
 }
 
 void GameLoop::update() {
+    using namespace Constants;
+
     double elapsedTime = clock.getElapsedTime();
 
     createOpponentTimer += elapsedTime;
@@ -87,7 +87,7 @@ void GameLoop::update() {
     }
 
     // Update game state
-    offsetY = std::fmod(offsetY + 64 - (256 * elapsedTime), 64);
+    offsetY = std::fmod(offsetY + UNIT_SIZE - (ROAD_SPEED * elapsedTime), UNIT_SIZE);
 }
 
 void GameLoop::render() {
@@ -95,7 +95,7 @@ void GameLoop::render() {
     graphics.resetRendition();
 
     // Draw the grid on the off-screen canvas
-    grid->drawGrid(graphics, *spriteSheet);
+    grid->drawGrid();
 
     // Copy a slice of the off-screen canvas back to itself to simulate scrolling
     graphics.scrollSlice((int)offsetX, (int)offsetY);

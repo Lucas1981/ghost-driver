@@ -1,6 +1,8 @@
 #include "spritesheet.h"
 #include <iostream>
 
+using namespace Constants;
+
 SpriteSheet::SpriteSheet(SDL_Renderer* renderer, const std::string& filePath) : renderer(renderer), texture(nullptr) {
     texture = IMG_LoadTexture(renderer, filePath.c_str());
     if (!texture) {
@@ -18,12 +20,12 @@ SpriteSheet::~SpriteSheet() {
 
 void SpriteSheet::initializeTextures() {
     // Define texture slices for each texture type
-    textureMap[TextureType::STRIPED_ROAD] = { 0, 0, 64, 64 };
-    textureMap[TextureType::PLAIN_ROAD] = { 192, 0, 64, 64 };
-    textureMap[TextureType::GRASS] = { 64, 0, 64, 64 };
-    textureMap[TextureType::CAR] = { 128, 0, 64, 64 };
-    textureMap[TextureType::OPPONENT] = { 0, 64, 64, 64 };
-    textureMap[TextureType::EXPLOSION] = { 64, 64, 64, 64 };
+    textureMap[TextureType::STRIPED_ROAD] = { 0, 0, UNIT_SIZE, UNIT_SIZE };
+    textureMap[TextureType::PLAIN_ROAD] = { 3 * UNIT_SIZE, 0, UNIT_SIZE, UNIT_SIZE };
+    textureMap[TextureType::GRASS] = { UNIT_SIZE, 0, UNIT_SIZE, UNIT_SIZE };
+    textureMap[TextureType::CAR] = { 2 * UNIT_SIZE, 0, UNIT_SIZE, UNIT_SIZE };
+    textureMap[TextureType::OPPONENT] = { 0, UNIT_SIZE, UNIT_SIZE, UNIT_SIZE };
+    textureMap[TextureType::EXPLOSION] = { UNIT_SIZE, UNIT_SIZE, UNIT_SIZE, UNIT_SIZE };
     // Add other texture mappings here
 }
 

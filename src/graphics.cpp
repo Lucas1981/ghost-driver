@@ -1,8 +1,11 @@
 #include "graphics.h"
 #include <iostream>
 
+using namespace Constants;
+
 Graphics::Graphics() : window(nullptr), renderer(nullptr), offCanvasTexture(nullptr),
-    screenWidth(640), screenHeight(480), offCanvasWidth(640 + 64), offCanvasHeight(480 + 64) {}
+    screenWidth(SCREEN_WIDTH), screenHeight(SCREEN_HEIGHT), offCanvasWidth(SCREEN_WIDTH + UNIT_SIZE),
+    offCanvasHeight(SCREEN_HEIGHT + UNIT_SIZE) {}
 
 Graphics::~Graphics() {
     if (offCanvasTexture) {

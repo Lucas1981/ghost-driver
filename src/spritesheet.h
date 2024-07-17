@@ -5,6 +5,7 @@
 #include <SDL2/SDL_image.h>
 #include <string>
 #include <unordered_map>
+#include "constants.h"
 
 enum class TextureType {
     STRIPED_ROAD,

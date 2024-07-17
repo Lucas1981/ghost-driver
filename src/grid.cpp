@@ -2,6 +2,8 @@
 #include <fstream>
 #include <iostream>
 
+using namespace Constants;
+
 Grid::Grid(const std::string& filePath, Graphics& graphics, SpriteSheet& spriteSheet)
     : filePath(filePath), graphics(graphics), spriteSheet(spriteSheet) {}
 
@@ -37,12 +39,11 @@ TextureType Grid::getTextureType(int value) {
     }
 }
 
-void Grid::drawGrid(Graphics& graphics, SpriteSheet& spriteSheet) {
-    int tileSize = 64;
+void Grid::drawGrid() {
     for (size_t y = 0; y < gridData.size(); ++y) {
         for (size_t x = 0; x < gridData[y].size(); ++x) {
             TextureType textureType = getTextureType(gridData[y][x]);
-            graphics.drawTexture(x * tileSize, y * tileSize, tileSize, spriteSheet.getTextureSlice(textureType));
+            graphics.drawTexture(x * UNIT_SIZE, y * UNIT_SIZE, UNIT_SIZE, spriteSheet.getTextureSlice(textureType));
         }
     }
 }

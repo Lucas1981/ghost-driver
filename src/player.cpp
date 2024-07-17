@@ -1,13 +1,21 @@
 #include "player.h"
 #include <iostream>
 
+using namespace Constants;
+
+const int Player::LEFT_BOUND = (2 * UNIT_SIZE) + 16;
+const int Player::RIGHT_BOUND = SCREEN_WIDTH - (4 * UNIT_SIZE) + 48;
+const int Player::UPPER_BOUND = 0;
+const int Player::LOWER_BOUND = SCREEN_HEIGHT - UNIT_SIZE;
+const int Player::SPEED = 300;
+
 Player::Player(SDL_Renderer* renderer, SpriteSheet* spriteSheet, Input* input, Clock* clock)
     : renderer(renderer), input(input), spriteSheet(spriteSheet), clock(clock) {
-    x = 320;
-    y = 240;
+    x = SCREEN_WIDTH / 2;
+    y = SCREEN_HEIGHT / 2;
     state = State::ALIVE;
     type = Type::PLAYER;
-    hitbox = {18, 0, 64 - 36, 64};
+    hitbox = {18, 0, 28, UNIT_SIZE};
 }
 
 Player::~Player() {
@@ -16,23 +24,23 @@ Player::~Player() {
 
 void Player::update() {
     double elapsedTime = clock->getElapsedTime();
-    int movementSpeed = static_cast<int>(elapsedTime * 300);  // Example speed calculation
+    int movementSpeed = static_cast<int>(elapsedTime * SPEED);  // Example speed calculation
 
     if (input->isKeyHeld(SDL_SCANCODE_UP)) {
-        y = std::max(0, y - movementSpeed);
+        y = std::max(UPPER_BOUND, y - movementSpeed);
     }
     if (input->isKeyHeld(SDL_SCANCODE_DOWN)) {
-        y = std::min(480 - 64, y + movementSpeed);
+        y = std::min(LOWER_BOUND, y + movementSpeed);
     }
     if (input->isKeyHeld(SDL_SCANCODE_LEFT)) {
-        x = std::max((2 * 64) + 16, x - movementSpeed);
+        x = std::max(LEFT_BOUND, x - movementSpeed);
     }
     if (input->isKeyHeld(SDL_SCANCODE_RIGHT)) {
-        x = std::min(640 - (4 * 64) + 48, x + movementSpeed);
+        x = std::min(RIGHT_BOUND, x + movementSpeed);
     }
 }
 
 void Player::draw(Graphics& graphics) {
     TextureSlice slice = spriteSheet->getTextureSlice(TextureType::CAR);  // Assuming TextureType::CAR is defined
-    graphics.drawTexture(x, y, 64, slice);  // Draw the player using the spritesheet
+    graphics.drawTexture(x, y, UNIT_SIZE, slice);  // Draw the player using the spritesheet
 }

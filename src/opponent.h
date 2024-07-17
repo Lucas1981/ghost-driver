@@ -6,6 +6,7 @@
 #include "graphics.h"
 #include "spritesheet.h"
 #include "clock.h"
+#include "constants.h"
 #include <random>
 
 class Opponent : public Agent {
@@ -20,6 +21,8 @@ private:
     SpriteSheet* spriteSheet;
     Clock* clock;  // Store the clock object as a private member
 
+    static const int THRESHOLD;
+    static const int SPEED;
     static std::mt19937 gen; // Random number generator
     static std::uniform_int_distribution<> dis; // Distribution for x coordinate
 

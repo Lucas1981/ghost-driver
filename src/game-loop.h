@@ -10,6 +10,7 @@
 #include "input.h"
 #include "player.h"
 #include "opponent.h"
+#include "constants.h"
 
 enum class GameState {
     TITLE_SCREEN,
@@ -27,6 +28,8 @@ private:
     void update();
     void render();
     void cleanup();
+
+    static const int ROAD_SPEED;
 
     GameState gameState;
     Graphics graphics;

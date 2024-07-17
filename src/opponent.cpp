@@ -2,9 +2,14 @@
 #include <iostream>
 #include <random> // Include the random header
 
+using namespace Constants;
+
+const int Opponent::THRESHOLD = SCREEN_WIDTH + UNIT_SIZE;
+const int Opponent::SPEED = 320;
+
 // Define and initialize static members
 std::mt19937 Opponent::gen(std::random_device{}());
-std::uniform_int_distribution<> Opponent::dis((2 * 64) + 16, 640 - (4 * 64) + 48);
+std::uniform_int_distribution<> Opponent::dis((2 * UNIT_SIZE) + 16, SCREEN_WIDTH - (4 * UNIT_SIZE) + 48);
 
 Opponent::Opponent(SDL_Renderer* renderer, SpriteSheet* spriteSheet, Clock* clock)
     : renderer(renderer), spriteSheet(spriteSheet), clock(clock) {
@@ -12,7 +17,7 @@ Opponent::Opponent(SDL_Renderer* renderer, SpriteSheet* spriteSheet, Clock* cloc
     y = -64;
     state = State::ALIVE;
     type = Type::OPPONENT;
-    hitbox = {18, 0, 64 - 36, 64};
+    hitbox = {18, 0, 28, UNIT_SIZE};
 }
 
 Opponent::~Opponent() {
@@ -25,17 +30,17 @@ int Opponent::getRandomX() {
 
 void Opponent::update() {
     double elapsedTime = clock->getElapsedTime();
-    int movementSpeed = static_cast<int>(elapsedTime * 320);  // Example speed calculation
+    int movementSpeed = static_cast<int>(elapsedTime * SPEED);  // Example speed calculation
 
     // Implement opponent-specific update logic here
     y += movementSpeed; // Move downwards for demonstration
 
-    if (y > 480 + 64) {
+    if (y > THRESHOLD) {
         state = State::DEAD;     
     }
 }
 
 void Opponent::draw(Graphics& graphics) {
     TextureSlice slice = spriteSheet->getTextureSlice(TextureType::OPPONENT);  // Assuming TextureType::CAR is defined
-    graphics.drawTexture(x, y, 64, slice);  // Draw the opponent using the spritesheet
+    graphics.drawTexture(x, y, UNIT_SIZE, slice);  // Draw the opponent using the spritesheet
 }
