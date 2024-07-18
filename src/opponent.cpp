@@ -15,8 +15,8 @@ Opponent::Opponent(SDL_Renderer* renderer, SpriteSheet* spriteSheet, Clock* cloc
     : renderer(renderer), spriteSheet(spriteSheet), clock(clock) {
     x = getRandomX();
     y = -64;
-    state = State::ALIVE;
-    type = Type::OPPONENT;
+    state = AgentState::ALIVE;
+    type = AgentType::OPPONENT;
     hitbox = {18, 0, 28, UNIT_SIZE};
 }
 
@@ -36,11 +36,10 @@ void Opponent::update() {
     y += movementSpeed; // Move downwards for demonstration
 
     if (y > THRESHOLD) {
-        state = State::DEAD;     
+        state = AgentState::DEAD;     
     }
 }
 
 void Opponent::draw(Graphics& graphics) {
-    TextureSlice slice = spriteSheet->getTextureSlice(TextureType::OPPONENT);  // Assuming TextureType::CAR is defined
-    graphics.drawTexture(x, y, UNIT_SIZE, slice);  // Draw the opponent using the spritesheet
+    Agent::draw(graphics, spriteSheet, TextureType::OPPONENT);
 }

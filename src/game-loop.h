@@ -1,7 +1,6 @@
 #ifndef GAME_LOOP_H
 #define GAME_LOOP_H
 
-#include <SDL2/SDL.h>
 #include <list>
 #include "graphics.h"
 #include "clock.h"
@@ -9,13 +8,8 @@
 #include "grid.h"
 #include "input.h"
 #include "player.h"
-#include "opponent.h"
-#include "constants.h"
-
-enum class GameState {
-    TITLE_SCREEN,
-    RUNNING
-};
+#include "state.h"
+#include "play.h"
 
 class GameLoop {
 public:
@@ -25,11 +19,7 @@ public:
 
 private:
     bool initialize();
-    void update();
-    void render();
     void cleanup();
-
-    static const int ROAD_SPEED;
 
     GameState gameState;
     Graphics graphics;
@@ -41,6 +31,7 @@ private:
     Player* player;
     Input input;
     std::list<Agent*> agents;  // Use a list to store agents
+    Play* play;
 
     double createOpponentTimer; // Timer for creating new opponents
 };

@@ -32,6 +32,8 @@ add_executable(GhostDriver
     src/opponent.cpp
     src/agent.cpp
     src/collision.cpp
+    src/state.cpp
+    src/play.cpp
 )
 
 # Link SDL2 and SDL2_image

@@ -13,8 +13,8 @@ Player::Player(SDL_Renderer* renderer, SpriteSheet* spriteSheet, Input* input, C
     : renderer(renderer), input(input), spriteSheet(spriteSheet), clock(clock) {
     x = SCREEN_WIDTH / 2;
     y = SCREEN_HEIGHT / 2;
-    state = State::ALIVE;
-    type = Type::PLAYER;
+    state = AgentState::ALIVE;
+    type = AgentType::PLAYER;
     hitbox = {18, 0, 28, UNIT_SIZE};
 }
 
@@ -41,6 +41,5 @@ void Player::update() {
 }
 
 void Player::draw(Graphics& graphics) {
-    TextureSlice slice = spriteSheet->getTextureSlice(TextureType::CAR);  // Assuming TextureType::CAR is defined
-    graphics.drawTexture(x, y, UNIT_SIZE, slice);  // Draw the player using the spritesheet
+    Agent::draw(graphics, spriteSheet, TextureType::CAR);
 }
