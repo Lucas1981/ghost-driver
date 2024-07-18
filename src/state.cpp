@@ -1,7 +1,7 @@
 #include "state.h"
 
 GameState::GameState()
-    : state(GameStateType::RUNNING),
+    : state(GameStateType::TITLE_SCREEN),
       lastStateChange(std::chrono::steady_clock::now()),
       timeLeft(0.0),
       distanceTraveled(0.0),
@@ -25,6 +25,12 @@ double GameState::getDistanceTraveled() const {
 
 double GameState::getSpeed() const {
     return speed;
+}
+
+double GameState::getTimeSinceLastStateChange() const {
+    auto now = std::chrono::steady_clock::now();
+    std::chrono::duration<double> elapsed_seconds = now - lastStateChange;
+    return elapsed_seconds.count();
 }
 
 void GameState::setState(GameStateType newState) {

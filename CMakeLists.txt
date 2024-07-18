@@ -34,6 +34,7 @@ add_executable(GhostDriver
     src/collision.cpp
     src/state.cpp
     src/play.cpp
+    src/title-screen.cpp
 )
 
 # Link SDL2 and SDL2_image

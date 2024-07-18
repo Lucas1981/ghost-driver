@@ -96,3 +96,7 @@ void Play::render() {
         agent->draw(graphics); // No offset needed
     }
 }
+
+void Play::resetStage() {
+    offsetY = 0;
+}

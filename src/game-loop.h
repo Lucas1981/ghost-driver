@@ -1,6 +1,7 @@
 #ifndef GAME_LOOP_H
 #define GAME_LOOP_H
 
+#include <SDL2/SDL.h>
 #include <list>
 #include "graphics.h"
 #include "clock.h"
@@ -10,6 +11,7 @@
 #include "player.h"
 #include "state.h"
 #include "play.h"
+#include "title-screen.h"
 
 class GameLoop {
 public:
@@ -32,6 +34,7 @@ private:
     Input input;
     std::list<Agent*> agents;  // Use a list to store agents
     Play* play;
+    TitleScreen titleScreen;
 
     double createOpponentTimer; // Timer for creating new opponents
 };

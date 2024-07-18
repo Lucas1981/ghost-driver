@@ -17,6 +17,7 @@ public:
     ~Play();
 
     void run(bool withUpdate);
+    void resetStage();
 
 private:
     void update();
@@ -28,7 +29,7 @@ private:
     Clock& clock;
     SpriteSheet* spriteSheet;
     Grid* grid;
-    std::list<Agent*> agents;
+    std::list<Agent*>& agents;
     GameState& gameState;
 
     double createOpponentTimer;

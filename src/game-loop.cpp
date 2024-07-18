@@ -22,11 +22,21 @@ void GameLoop::run() {
                 std::cerr << "Failed to initialize!" << std::endl;
                 return;
             case GameStateType::TITLE_SCREEN:
+                if (input.isKeyHeld(SDL_SCANCODE_RETURN)) {
+                    gameState.setState(GameStateType::RUNNING);
+                }
+                titleScreen.drawTitleScreen(graphics.getRenderer());
                 break;
             case GameStateType::RUNNING:
                 play->run(true);
                 break;
             case GameStateType::CRASHED:
+                if (gameState.getTimeSinceLastStateChange() > 1) {
+                    play->resetStage();
+                    agents.clear();
+                    agents.push_back(new Player(graphics.getRenderer(), spriteSheet, &input, &clock));
+                    gameState.setState(GameStateType::RUNNING);
+                }
                 play->run(false);
                 break;
         }
@@ -48,10 +58,18 @@ bool GameLoop::initialize() {
         std::cerr << "Failed to load grid!" << std::endl;
         return false;
     }
+
+    // Load the title screen
+    if (!titleScreen.loadTitleScreen(graphics.getRenderer(), "../assets/title-screen.png")) {
+        std::cerr << "Failed to load title screen!" << std::endl;
+        return false;
+    }
+    
     return true;
 }
 
 void GameLoop::cleanup() {
+    delete play;
     delete spriteSheet;
     delete grid;
     for (auto agent : agents) {

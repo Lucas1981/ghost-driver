@@ -20,6 +20,7 @@ public:
     double getTimeLeft() const;
     double getDistanceTraveled() const;
     double getSpeed() const;
+    double getTimeSinceLastStateChange() const; // New method
 
     // Setters
     void setState(GameStateType newState);
