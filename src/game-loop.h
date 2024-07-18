@@ -12,6 +12,7 @@
 #include "state.h"
 #include "play.h"
 #include "title-screen.h"
+#include "user-interface.h"
 
 class GameLoop {
 public:
@@ -35,6 +36,7 @@ private:
     std::list<Agent*> agents;  // Use a list to store agents
     Play* play;
     TitleScreen titleScreen;
+    UI ui;
 
     double createOpponentTimer; // Timer for creating new opponents
 };

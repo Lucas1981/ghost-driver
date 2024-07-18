@@ -26,6 +26,7 @@ void GameLoop::run() {
                     gameState.setState(GameStateType::RUNNING);
                 }
                 titleScreen.drawTitleScreen(graphics.getRenderer());
+                // ui.renderText(graphics.getRenderer(), "Greetings, earthling!", 200, 200);
                 break;
             case GameStateType::RUNNING:
                 play->run(true);
@@ -62,6 +63,12 @@ bool GameLoop::initialize() {
     // Load the title screen
     if (!titleScreen.loadTitleScreen(graphics.getRenderer(), "../assets/title-screen.png")) {
         std::cerr << "Failed to load title screen!" << std::endl;
+        return false;
+    }
+
+    // Initialize the UI
+    if (!ui.initialize(graphics.getRenderer(), "../assets/font.ttf", 24)) {
+        std::cerr << "Failed to initialize UI!" << std::endl;
         return false;
     }
     
