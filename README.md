@@ -7,15 +7,15 @@ My challenge was to have a scrolling background. The objective will be pretty si
 ## Todo
 
 - [x] Add collision
-- [ ] Expand game states:
-    - TITLE
-    - READY
-    - RUNNING
-    - CRASHED
-    - LOST
-    - WON
+- [x] Add title screen
 - [ ] Add UI
+- [ ] Expand game states:
+    - [x] TITLE
+    - [ ] READY
+    - [x] RUNNING
+    - [x] CRASHED
+    - [ ] LOST
+    - [ ] WON
 - [ ] Add timer
 - [ ] Add sounds
-- [ ] Add title screen
 
