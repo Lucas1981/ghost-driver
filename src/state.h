@@ -5,6 +5,7 @@
 
 enum class GameStateType {
     TITLE_SCREEN,
+    READY,
     RUNNING,
     CRASHED,
     GAME_OVER

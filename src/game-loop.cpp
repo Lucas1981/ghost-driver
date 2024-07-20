@@ -1,5 +1,6 @@
 #include "game-loop.h"
 #include <iostream>
+#include "constants.h"
 
 GameLoop::GameLoop() : offsetX(32.0), offsetY(0.0), createOpponentTimer(0.0) {}
 
@@ -8,6 +9,8 @@ GameLoop::~GameLoop() {
 }
 
 void GameLoop::run() {
+    using namespace Constants;
+
     if (!initialize()) {
         std::cerr << "Failed to initialize!" << std::endl;
         return;
@@ -23,10 +26,17 @@ void GameLoop::run() {
                 return;
             case GameStateType::TITLE_SCREEN:
                 if (input.isKeyHeld(SDL_SCANCODE_RETURN)) {
-                    gameState.setState(GameStateType::RUNNING);
+                    gameState.setState(GameStateType::READY);
                 }
                 titleScreen.drawTitleScreen(graphics.getRenderer());
-                // ui.renderText(graphics.getRenderer(), "Greetings, earthling!", 200, 200);
+                ui.renderText(graphics.getRenderer(), "press enter to start", SCREEN_WIDTH / 2, 300, UI::TextAlign::CENTER);
+                break;
+            case GameStateType::READY:
+                if (gameState.getTimeSinceLastStateChange() > 1) {
+                    gameState.setState(GameStateType::RUNNING);
+                }
+                play->run(false);
+                ui.renderText(graphics.getRenderer(), "get ready!", SCREEN_WIDTH / 2, 200, UI::TextAlign::CENTER);
                 break;
             case GameStateType::RUNNING:
                 play->run(true);
@@ -36,7 +46,7 @@ void GameLoop::run() {
                     play->resetStage();
                     agents.clear();
                     agents.push_back(new Player(graphics.getRenderer(), spriteSheet, &input, &clock));
-                    gameState.setState(GameStateType::RUNNING);
+                    gameState.setState(GameStateType::READY);
                 }
                 play->run(false);
                 break;

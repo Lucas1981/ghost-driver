@@ -8,10 +8,10 @@ My challenge was to have a scrolling background. The objective will be pretty si
 
 - [x] Add collision
 - [x] Add title screen
-- [ ] Add UI
+- [x] Add UI
 - [ ] Expand game states:
     - [x] TITLE
-    - [ ] READY
+    - [x] READY
     - [x] RUNNING
     - [x] CRASHED
     - [ ] LOST
