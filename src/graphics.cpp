@@ -1,5 +1,10 @@
 #include "graphics.h"
-#include <iostream>
+#include <SDL.h>          // for SDL_Init, SDL_Quit, SDL_INIT_VIDEO
+#include <SDL_error.h>    // for SDL_GetError
+#include <SDL_rect.h>     // for SDL_Rect
+#include <iostream>       // for basic_ostream, char_traits, operator<<, endl
+#include "constants.h"    // for SCREEN_HEIGHT, SCREEN_WIDTH, UNIT_SIZE
+#include "spritesheet.h"  // for TextureSlice
 
 using namespace Constants;
 

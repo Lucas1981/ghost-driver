@@ -1,8 +1,7 @@
 #ifndef COLLISION_H
 #define COLLISION_H
 
-#include <SDL2/SDL.h>
-#include "agent.h"
+class Agent;
 
 bool checkCollision(const Agent* a, const Agent* b);
 

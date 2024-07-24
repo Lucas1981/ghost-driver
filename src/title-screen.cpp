@@ -1,5 +1,9 @@
 #include "title-screen.h"
-#include <iostream>
+#include <SDL_error.h>       // for SDL_GetError
+#include <SDL_rect.h>        // for SDL_Rect
+#include <SDL_surface.h>     // for SDL_FreeSurface, SDL_Surface
+#include <iostream>          // for basic_ostream, operator<<, endl, cerr
+#include "SDL2/SDL_image.h"  // for IMG_Load, IMG_GetError
 
 TitleScreen::TitleScreen() : titleTexture(nullptr), width(0), height(0) {}
 

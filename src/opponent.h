@@ -1,13 +1,11 @@
 #ifndef OPPONENT_H
 #define OPPONENT_H
 
-#include <SDL2/SDL.h>
-#include "agent.h"
-#include "graphics.h"
-#include "spritesheet.h"
-#include "clock.h"
-#include "constants.h"
-#include <random>
+#include <random>   // for mt19937, uniform_int_distribution
+#include "agent.h"  // for Agent
+class Clock;
+class Graphics;
+class SpriteSheet;
 
 class Opponent : public Agent {
 public:

@@ -1,8 +1,15 @@
 #include "play.h"
-#include <iostream>
-#include <cmath>
-#include "constants.h"
-#include "collision.h"
+#include <cmath>            // for fmod
+#include "agent.h"          // for Agent
+#include "clock.h"          // for Clock
+#include "collision.h"      // for checkCollision
+#include "constants.h"      // for UNIT_SIZE
+#include "graphics.h"       // for Graphics
+#include "grid.h"           // for Grid
+#include "opponent.h"       // for Opponent
+#include "sound.h"          // for Sound, SoundType
+#include "state.h"          // for GameState, GameStateType
+class SpriteSheet;
 
 Play::Play(
     Graphics& graphics,

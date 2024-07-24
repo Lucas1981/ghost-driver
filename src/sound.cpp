@@ -1,5 +1,6 @@
 #include "sound.h"
-#include <iostream>
+#include <iostream>          // for basic_ostream, operator<<, endl, cerr
+#include "SDL2/SDL_mixer.h"  // for Mix_CloseAudio, Mix_FreeChunk, Mix_GetError
 
 Sound::Sound() {
     initialize();

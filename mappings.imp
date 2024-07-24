@@ -1,0 +1,5 @@
+[
+    { include: ["<__fwd/sstream.h>", "public", "<sstream>", "public"] },
+    { include: ["<__fwd/fstream.h>", "public", "<fstream>", "public"] },
+    { include: ["<__math/modulo.h>", "public", "<cmath>", "public"] }
+]

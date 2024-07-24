@@ -1,5 +1,11 @@
 #include "player.h"
-#include <iostream>
+#include <SDL_scancode.h>  // for SDL_SCANCODE_DOWN, SDL_SCANCODE_LEFT, SDL_...
+#include <algorithm>       // for max, min
+#include "clock.h"         // for Clock
+#include "constants.h"     // for UNIT_SIZE, SCREEN_HEIGHT, SCREEN_WIDTH
+#include "input.h"         // for Input
+#include "spritesheet.h"   // for TextureType
+class Graphics;
 
 using namespace Constants;
 

@@ -1,11 +1,10 @@
 #ifndef SPRITESHEET_H
 #define SPRITESHEET_H
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <string>
-#include <unordered_map>
-#include "constants.h"
+#include <SDL_rect.h>     // for SDL_Rect
+#include <SDL_render.h>   // for SDL_Texture, SDL_Renderer
+#include <string>         // for string
+#include <unordered_map>  // for unordered_map
 
 enum class TextureType {
     STRIPED_ROAD,

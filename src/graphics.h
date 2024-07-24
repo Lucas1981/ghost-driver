@@ -1,9 +1,10 @@
 #ifndef GRAPHICS_H
 #define GRAPHICS_H
 
-#include <SDL2/SDL.h>
-#include "spritesheet.h"
-#include "constants.h"
+#include <SDL_pixels.h>  // for SDL_Color
+#include <SDL_render.h>  // for SDL_Renderer, SDL_Texture
+#include <SDL_video.h>   // for SDL_Window
+struct TextureSlice;
 
 class Graphics {
 public:

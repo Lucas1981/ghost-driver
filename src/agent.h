@@ -1,10 +1,10 @@
 #ifndef AGENT_H
 #define AGENT_H
 
-#include <SDL2/SDL.h>
-#include "graphics.h"
-#include "spritesheet.h"
-#include "constants.h"
+#include <SDL_rect.h>  // for SDL_Rect
+class Graphics;
+class SpriteSheet;
+enum class TextureType;
 
 enum class AgentState {
     ALIVE,

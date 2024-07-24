@@ -49,6 +49,9 @@ message(STATUS "SDL2_image include dirs: ${SDL2_IMAGE_INCLUDE_DIRS}")
 message(STATUS "SDL2_ttf include dirs: ${SDL2_TTF_INCLUDE_DIRS}")
 message(STATUS "SDL2_mixer include dirs: ${SDL2_MIXER_INCLUDE_DIRS}")
 
+# Enable IWYU
+set(CMAKE_CXX_INCLUDE_WHAT_YOU_USE "include-what-you-use;-Xiwyu;--mapping_file=../mappings.imp")
+
 # Add the executable
 add_executable(GhostDriver 
     src/main.cpp 

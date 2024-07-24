@@ -1,12 +1,10 @@
 #ifndef GRID_H
 #define GRID_H
 
-#include <vector>
-#include <string>
-#include <SDL2/SDL.h>
-#include "graphics.h"
-#include "spritesheet.h"
-#include "constants.h"
+#include <string>         // for string, basic_string
+#include <vector>         // for vector
+#include "spritesheet.h"  // for TextureType
+class Graphics;
 
 class Grid {
 public:

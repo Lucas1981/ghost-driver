@@ -1,13 +1,11 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#include <SDL2/SDL.h>
-#include "graphics.h"
-#include "input.h"
-#include "agent.h"
-#include "spritesheet.h"
-#include "clock.h"
-#include "constants.h"
+#include "agent.h"  // for Agent
+class Clock;
+class Graphics;
+class Input;
+class SpriteSheet;
 
 class Player : public Agent {
 public:

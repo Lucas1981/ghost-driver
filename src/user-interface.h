@@ -1,9 +1,10 @@
 #ifndef USER_INTERFACE_H
 #define USER_INTERFACE_H
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
-#include <string>
+#include <SDL2/SDL_ttf.h>     // for TTF_Font
+#include <string>             // for string
+#include "SDL2/SDL_pixels.h"  // for SDL_Color
+#include "SDL2/SDL_render.h"  // for SDL_Renderer
 
 class UI {
 public:

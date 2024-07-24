@@ -1,6 +1,9 @@
 #include "opponent.h"
-#include <iostream>
-#include <random> // Include the random header
+#include <random>         // for random_device, uniform_int_distribution
+#include "clock.h"        // for Clock
+#include "constants.h"    // for UNIT_SIZE, SCREEN_WIDTH
+#include "spritesheet.h"  // for TextureType
+class Graphics;
 
 using namespace Constants;
 

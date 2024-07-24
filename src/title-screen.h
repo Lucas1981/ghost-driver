@@ -1,9 +1,8 @@
 #ifndef TITLE_SCREEN_H
 #define TITLE_SCREEN_H
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-#include <string>
+#include <SDL_render.h>  // for SDL_Renderer, SDL_Texture
+#include <string>        // for string
 
 class TitleScreen {
 public:

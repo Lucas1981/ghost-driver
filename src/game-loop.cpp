@@ -1,8 +1,16 @@
 #include "game-loop.h"
-#include <iostream>
-#include <sstream>
-#include <cmath>
-#include "constants.h"
+#include <SDL_scancode.h>   // for SDL_SCANCODE_RETURN
+#include <algorithm>        // for max
+#include <cmath>            // for ceil
+#include <iostream>         // for basic_ostream, operator<<, endl, cerr
+#include <sstream>          // For std::stringstream
+#include <string>           // for char_traits, allocator, basic_string
+#include "agent.h"          // for Agent
+#include "constants.h"      // for SCREEN_WIDTH
+#include "grid.h"           // for Grid
+#include "play.h"           // for Play
+#include "player.h"         // for Player
+#include "spritesheet.h"    // for SpriteSheet
 
 using namespace Constants;
 

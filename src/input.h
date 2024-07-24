@@ -1,8 +1,9 @@
 #ifndef INPUT_H
 #define INPUT_H
 
-#include <SDL2/SDL.h>
-#include <map>
+#include <SDL_events.h>    // for SDL_Event
+#include <SDL_scancode.h>  // for SDL_Scancode
+#include <map>             // for map
 
 class Input {
 public:

@@ -1,5 +1,7 @@
 #include "spritesheet.h"
-#include <iostream>
+#include <iostream>          // for basic_ostream, operator<<, endl, cerr
+#include "SDL2/SDL_image.h"  // for IMG_LoadTexture, IMG_GetError
+#include "constants.h"       // for UNIT_SIZE
 
 using namespace Constants;
 

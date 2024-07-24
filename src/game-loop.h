@@ -1,19 +1,18 @@
 #ifndef GAME_LOOP_H
 #define GAME_LOOP_H
 
-#include <SDL2/SDL.h>
-#include <list>
-#include "graphics.h"
-#include "clock.h"
-#include "spritesheet.h"
-#include "grid.h"
-#include "input.h"
-#include "player.h"
-#include "state.h"
-#include "play.h"
-#include "title-screen.h"
-#include "user-interface.h"
-#include "sound.h"
+#include <list>              // for list
+#include "clock.h"           // for Clock
+#include "graphics.h"        // for Graphics
+#include "input.h"           // for Input
+#include "sound.h"           // for Sound
+#include "state.h"           // for GameState
+#include "title-screen.h"    // for TitleScreen
+#include "user-interface.h"  // for UI
+class Agent;
+class Grid;
+class Play;
+class SpriteSheet;
 
 class GameLoop {
 public:

@@ -1,5 +1,9 @@
 #include "user-interface.h"
-#include <iostream>
+#include <iostream>            // for basic_ostream, operator<<, endl, cerr
+#include "SDL2/SDL_error.h"    // for SDL_GetError
+#include "SDL2/SDL_rect.h"     // for SDL_Rect
+#include "SDL2/SDL_surface.h"  // for SDL_FreeSurface, SDL_Surface
+#include "SDL2/SDL_ttf.h"      // for TTF_GetError, TTF_RenderText_Solid
 
 UI::UI() : font(nullptr) {}
 

@@ -1,6 +1,9 @@
 #include "grid.h"
-#include <fstream>
-#include <iostream>
+#include <stddef.h>         // for size_t
+#include <fstream>          // for basic_ifstream, basic_istream, basic_ostream
+#include <iostream>         // for cerr
+#include "constants.h"      // for UNIT_SIZE
+#include "graphics.h"       // for Graphics
 
 using namespace Constants;
 

@@ -1,5 +1,6 @@
 #include "collision.h"
-#include <iostream>
+#include <SDL_rect.h>  // for SDL_HasIntersection, SDL_Rect
+#include "agent.h"     // for Agent
 
 bool checkCollision(const Agent* a, const Agent* b) {
     SDL_Rect rectA = a->getTranslatedHitbox();
