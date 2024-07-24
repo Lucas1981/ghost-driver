@@ -10,10 +10,19 @@
 #include "input.h"
 #include "opponent.h"
 #include "state.h"
+#include "sound.h"
 
 class Play {
 public:
-    Play(Graphics& graphics, Clock& clock, SpriteSheet* spriteSheet, Grid* grid, std::list<Agent*>& agents, GameState& gameState);
+    Play(
+        Graphics& graphics,
+        Clock& clock,
+        SpriteSheet* spriteSheet,
+        Grid* grid,
+        std::list<Agent*>& agents,
+        GameState& gameState,
+        Sound& sound
+    );
     ~Play();
 
     void run(bool withUpdate);
@@ -31,6 +40,7 @@ private:
     Grid* grid;
     std::list<Agent*>& agents;
     GameState& gameState;
+    Sound& sound;
 
     double createOpponentTimer;
     double offsetX;

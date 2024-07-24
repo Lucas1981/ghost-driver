@@ -10,13 +10,15 @@ Play::Play(
     SpriteSheet* spriteSheet,
     Grid* grid,
     std::list<Agent*>& agents,
-    GameState& gameState
+    GameState& gameState,
+    Sound& sound
 ) : graphics(graphics),
     clock(clock),
     spriteSheet(spriteSheet),
     grid(grid),
     agents(agents),
     gameState(gameState),
+    sound(sound),
     createOpponentTimer(0.0),
     offsetX(32.0),
     offsetY(0.0) {}
@@ -72,6 +74,7 @@ void Play::update() {
                 player->markAsCrashed();
                 agent->markAsCrashed();
                 gameState.setSpeed(0);
+                sound.enqueueSound(SoundType::CRASH);
                 gameState.setState(GameStateType::CRASHED);
             }
         }
@@ -85,6 +88,7 @@ void Play::update() {
     gameState.reduceDistanceLeft(distanceTraveled);
 
     if (gameState.getDistanceLeft() <= 0.0) {
+        sound.enqueueSound(SoundType::WON);
         gameState.setState(GameStateType::WIN);
     }
 }

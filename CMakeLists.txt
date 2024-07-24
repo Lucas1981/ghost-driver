@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 
 # Project name
-project(MyGame)
+project(GhostDriver)
 
 # Set the C++ standard
 set(CMAKE_CXX_STANDARD 17)
@@ -15,6 +15,10 @@ set(SDL2_IMAGE_LIBRARIES /opt/homebrew/lib/libSDL2_image.dylib)
 set(SDL2_TTF_INCLUDE_DIRS /opt/homebrew/include/)
 set(SDL2_TTF_LIBRARIES /opt/homebrew/lib/libSDL2_ttf.dylib)
 
+# Manually set SDL2_ttf include and library directories
+set(SDL2_MIXER_INCLUDE_DIRS /opt/homebrew/include/)
+set(SDL2_MIXER_LIBRARIES /opt/homebrew/lib/libSDL2_mixer.dylib)
+
 # Find SDL2
 find_package(SDL2 REQUIRED)
 include_directories(${SDL2_INCLUDE_DIRS})
@@ -23,6 +27,7 @@ include_directories(${SDL2_INCLUDE_DIRS})
 message(STATUS "SDL2 include dirs: ${SDL2_INCLUDE_DIRS}")
 message(STATUS "SDL2_image include dirs: ${SDL2_IMAGE_INCLUDE_DIRS}")
 message(STATUS "SDL2_ttf include dirs: ${SDL2_TTF_INCLUDE_DIRS}")
+message(STATUS "SDL2_mixer include dirs: ${SDL2_MIXER_INCLUDE_DIRS}")
 
 # Add the executable
 add_executable(GhostDriver 
@@ -41,10 +46,11 @@ add_executable(GhostDriver
     src/play.cpp
     src/title-screen.cpp
     src/user-interface.cpp
+    src/sound.cpp
 )
 
-# Link SDL2, SDL2_image, and SDL2_ttf
-target_link_libraries(GhostDriver ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES} ${SDL2_TTF_LIBRARIES})
+# Link SDL2, SDL2_image, SDL2_ttf, and SDL2_mixer
+target_link_libraries(GhostDriver ${SDL2_LIBRARIES} ${SDL2_IMAGE_LIBRARIES} ${SDL2_TTF_LIBRARIES} ${SDL2_MIXER_LIBRARIES})
 
 # Explicitly add include directories
-target_include_directories(GhostDriver PRIVATE ${SDL2_INCLUDE_DIRS} ${SDL2_IMAGE_INCLUDE_DIRS} ${SDL2_TTF_INCLUDE_DIRS})
+target_include_directories(GhostDriver PRIVATE ${SDL2_INCLUDE_DIRS} ${SDL2_IMAGE_INCLUDE_DIRS} ${SDL2_TTF_INCLUDE_DIRS} ${SDL2_MIXER_INCLUDE_DIRS})

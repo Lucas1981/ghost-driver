@@ -13,6 +13,7 @@
 #include "play.h"
 #include "title-screen.h"
 #include "user-interface.h"
+#include "sound.h"
 
 class GameLoop {
 public:
@@ -45,6 +46,7 @@ private:
     Play* play;
     TitleScreen titleScreen;
     UI ui;
+    Sound sound;
 
     double createOpponentTimer; // Timer for creating new opponents
 };

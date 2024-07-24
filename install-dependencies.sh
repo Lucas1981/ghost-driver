@@ -12,4 +12,7 @@ brew install sdl2_image
 # Install SDL2_ttf
 brew install sdl2_ttf
 
+# Install SDL2_mixer
+brew install sdl2_mixer
+
 echo "All dependencies have been installed."

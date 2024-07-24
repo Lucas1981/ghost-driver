@@ -46,6 +46,7 @@ void GameLoop::run() {
                 break;
         }
 
+        sound.handleQueue();
         graphics.present();
     }
 }
@@ -56,6 +57,7 @@ void GameLoop::handleTitleScreenState() {
         gameState.setTimeLeft(60.0);
         gameState.setDistanceLeft(4.0);
         gameState.setSpeed(0);
+        sound.enqueueSound(SoundType::START_ENGINE);
         gameState.setState(GameStateType::READY);
     }
     titleScreen.drawTitleScreen(graphics.getRenderer());
@@ -76,6 +78,7 @@ void GameLoop::handleRunningState() {
     gameState.reduceTimeLeft(clock.getElapsedTime());
     if (gameState.getTimeLeft() <= 0) {
         gameState.setTimeLeft(0);
+        sound.enqueueSound(SoundType::LOST);
         gameState.setState(GameStateType::TIME_UP);
     }
     play->run(true);
@@ -94,7 +97,7 @@ void GameLoop::handleCrashedState() {
 }
 
 void GameLoop::handleTimeUpState() {
-    if (gameState.getTimeSinceLastStateChange() > 2) {
+    if (gameState.getTimeSinceLastStateChange() > 3) {
         gameState.setState(GameStateType::TITLE_SCREEN);        
     }
     play->run(false);
@@ -139,7 +142,7 @@ bool GameLoop::initialize() {
     spriteSheet = new SpriteSheet(graphics.getRenderer(), "../assets/tiles.png");
     agents.push_back(new Player(graphics.getRenderer(), spriteSheet, &input, &clock));
     grid = new Grid("../assets/grid.txt", graphics, *spriteSheet);  // Initialize Grid with file path
-    play = new Play(graphics, clock, spriteSheet, grid, agents, gameState);
+    play = new Play(graphics, clock, spriteSheet, grid, agents, gameState, sound);
     if (!grid->loadGrid()) {
         std::cerr << "Failed to load grid!" << std::endl;
         return false;
