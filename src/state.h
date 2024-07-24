@@ -8,7 +8,6 @@ enum class GameStateType {
     READY,
     RUNNING,
     CRASHED,
-    GAME_OVER,
     TIME_UP,
     WIN
 };

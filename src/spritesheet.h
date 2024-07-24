@@ -32,7 +32,6 @@ private:
     void initializeTextures();
 
     SDL_Texture* texture;
-    SDL_Renderer* renderer;
     std::unordered_map<TextureType, SDL_Rect> textureMap;
 };
 

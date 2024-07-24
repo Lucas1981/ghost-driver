@@ -10,8 +10,8 @@ const int Opponent::THRESHOLD = SCREEN_WIDTH + UNIT_SIZE;
 std::mt19937 Opponent::gen(std::random_device{}());
 std::uniform_int_distribution<> Opponent::dis((2 * UNIT_SIZE) + 16, SCREEN_WIDTH - (4 * UNIT_SIZE) + 48);
 
-Opponent::Opponent(SDL_Renderer* renderer, SpriteSheet* spriteSheet, Clock* clock)
-    : renderer(renderer), spriteSheet(spriteSheet), clock(clock) {
+Opponent::Opponent(SpriteSheet* spriteSheet, Clock* clock)
+    : spriteSheet(spriteSheet), clock(clock) {
     x = getRandomX();
     y = -64;
     state = AgentState::ALIVE;

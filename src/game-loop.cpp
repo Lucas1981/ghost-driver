@@ -6,7 +6,7 @@
 
 using namespace Constants;
 
-GameLoop::GameLoop() : offsetX(32.0), offsetY(0.0), createOpponentTimer(0.0) {}
+GameLoop::GameLoop() {}
 
 GameLoop::~GameLoop() {
     cleanup();
@@ -117,7 +117,7 @@ void GameLoop::handleWinState() {
 void GameLoop::reset() {
     play->resetStage();
     agents.clear();
-    agents.push_back(new Player(graphics.getRenderer(), spriteSheet, &input, &clock));
+    agents.push_back(new Player(spriteSheet, &input, &clock));
 }
 
 void GameLoop::displayStatus() {
@@ -140,7 +140,7 @@ bool GameLoop::initialize() {
         return false;
     }
     spriteSheet = new SpriteSheet(graphics.getRenderer(), "../assets/tiles.png");
-    agents.push_back(new Player(graphics.getRenderer(), spriteSheet, &input, &clock));
+    agents.push_back(new Player(spriteSheet, &input, &clock));
     grid = new Grid("../assets/grid.txt", graphics, *spriteSheet);  // Initialize Grid with file path
     play = new Play(graphics, clock, spriteSheet, grid, agents, gameState, sound);
     if (!grid->loadGrid()) {
@@ -155,7 +155,7 @@ bool GameLoop::initialize() {
     }
 
     // Initialize the UI
-    if (!ui.initialize(graphics.getRenderer(), "../assets/font.ttf", 24)) {
+    if (!ui.initialize("../assets/font.ttf", 24)) {
         std::cerr << "Failed to initialize UI!" << std::endl;
         return false;
     }

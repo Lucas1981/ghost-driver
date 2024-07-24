@@ -3,7 +3,7 @@
 
 using namespace Constants;
 
-SpriteSheet::SpriteSheet(SDL_Renderer* renderer, const std::string& filePath) : renderer(renderer), texture(nullptr) {
+SpriteSheet::SpriteSheet(SDL_Renderer* renderer, const std::string& filePath) {
     texture = IMG_LoadTexture(renderer, filePath.c_str());
     if (!texture) {
         std::cerr << "Failed to load texture: " << IMG_GetError() << std::endl;

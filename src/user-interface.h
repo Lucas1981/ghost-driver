@@ -16,7 +16,7 @@ public:
     UI();
     ~UI();
 
-    bool initialize(SDL_Renderer* renderer, const std::string& fontPath, int fontSize);
+    bool initialize(const std::string& fontPath, int fontSize);
     void renderText(SDL_Renderer* renderer, const std::string& text, int x, int y, TextAlign align = TextAlign::LEFT);
     void renderInterpolatedText(SDL_Renderer* renderer, const std::string& text, double value, int x, int y, TextAlign align = TextAlign::LEFT);
     void cleanup();

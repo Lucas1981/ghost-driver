@@ -35,20 +35,15 @@ private:
 
     GameState gameState;
     Graphics graphics;
-    double offsetX;
-    double offsetY;
     Clock clock;
     SpriteSheet* spriteSheet;
     Grid* grid;
-    Player* player;
     Input input;
     std::list<Agent*> agents;  // Use a list to store agents
     Play* play;
     TitleScreen titleScreen;
     UI ui;
     Sound sound;
-
-    double createOpponentTimer; // Timer for creating new opponents
 };
 
 #endif // GAME_LOOP_H

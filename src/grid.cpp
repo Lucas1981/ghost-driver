@@ -43,7 +43,7 @@ void Grid::drawGrid() {
     for (size_t y = 0; y < gridData.size(); ++y) {
         for (size_t x = 0; x < gridData[y].size(); ++x) {
             TextureType textureType = getTextureType(gridData[y][x]);
-            graphics.drawTexture(x * UNIT_SIZE, y * UNIT_SIZE, UNIT_SIZE, spriteSheet.getTextureSlice(textureType));
+            graphics.drawTexture((int)x * UNIT_SIZE, (int)y * UNIT_SIZE, UNIT_SIZE, spriteSheet.getTextureSlice(textureType));
         }
     }
 }

@@ -41,7 +41,7 @@ void Play::update() {
 
     // Add a new opponent every 300 ms
     if (createOpponentTimer >= timeToNewOpponent) {
-        agents.push_back(new Opponent(graphics.getRenderer(), spriteSheet, &clock));
+        agents.push_back(new Opponent(spriteSheet, &clock));
         createOpponentTimer = 0.0; // Reset the timer
     }
 

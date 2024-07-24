@@ -7,7 +7,7 @@ UI::~UI() {
     cleanup();
 }
 
-bool UI::initialize(SDL_Renderer* renderer, const std::string& fontPath, int fontSize) {
+bool UI::initialize(const std::string& fontPath, int fontSize) {
     if (TTF_Init() == -1) {
         std::cerr << "Failed to initialize SDL_ttf: " << TTF_GetError() << std::endl;
         return false;

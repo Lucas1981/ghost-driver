@@ -23,7 +23,7 @@ public:
     virtual void update() = 0;
     virtual void draw(Graphics& graphics) = 0;
 
-    void draw(Graphics& graphics, SpriteSheet* spriteSheet, TextureType type);
+    void draw(Graphics& graphics, SpriteSheet* spriteSheet, TextureType localType);
     bool isAlive() const { return state == AgentState::ALIVE; }
     bool isCrashed() const { return state == AgentState::CRASHED; }
     bool isPlayer() const { return type == AgentType::PLAYER; }

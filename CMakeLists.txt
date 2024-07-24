@@ -7,6 +7,26 @@ project(GhostDriver)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
+# Compiler warning flags
+set(WARN_FLAGS
+    -Wall
+    -Wextra
+    -Werror
+    -Wshadow
+    -Wconversion
+    -pedantic
+    -pedantic-errors
+    -Wformat=2
+    -Wundef
+    -Wredundant-decls
+    -Wmissing-declarations
+    -Wmissing-include-dirs
+    -Wswitch-enum
+)
+
+# Apply warning flags
+add_compile_options(${WARN_FLAGS})
+
 # Manually set SDL2_image include and library directories
 set(SDL2_IMAGE_INCLUDE_DIRS /opt/homebrew/include/)
 set(SDL2_IMAGE_LIBRARIES /opt/homebrew/lib/libSDL2_image.dylib)

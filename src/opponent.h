@@ -11,13 +11,12 @@
 
 class Opponent : public Agent {
 public:
-    Opponent(SDL_Renderer* renderer, SpriteSheet* spriteSheet, Clock* clock);
+    Opponent(SpriteSheet* spriteSheet, Clock* clock);
     ~Opponent();
     void update() override;
     void draw(Graphics& graphics) override;
 
 private:
-    SDL_Renderer* renderer;
     SpriteSheet* spriteSheet;
     Clock* clock;  // Store the clock object as a private member
 

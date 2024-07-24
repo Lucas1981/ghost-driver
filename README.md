@@ -24,4 +24,3 @@ The handlers take care of delegating to other functions and also manipulate the 
     - [x] WON
 - [x] Add timer
 - [x] Add sounds
-

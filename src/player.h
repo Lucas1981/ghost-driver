@@ -11,7 +11,7 @@
 
 class Player : public Agent {
 public:
-    Player(SDL_Renderer* renderer, SpriteSheet* spriteSheet, Input* input, Clock* clock);
+    Player(SpriteSheet* spriteSheet, Input* input, Clock* clock);
     ~Player();
     void update() override;
     void draw(Graphics& graphics) override;
@@ -23,7 +23,6 @@ private:
     static const int LOWER_BOUND;
     static const int SPEED;
 
-    SDL_Renderer* renderer;
     Input* input;  // Store the input object as a private member
     SpriteSheet* spriteSheet;  // Store the spritesheet object as a private member
     Clock* clock;  // Store the clock object as a private member
