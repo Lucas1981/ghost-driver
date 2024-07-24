@@ -10,7 +10,9 @@ My challenge was to have a scrolling background. The objective will be pretty si
 
 So, the main.cpp file is just the entry point that kicks everything into gear. The main files that keep the game going are `game-loop.cpp`, `state.cpp` and `play.cpp`. The game-loop module just makes sure the loop is kept going, takes a look at the current state of the game with a big switch and then delegates to the appropriate handler for the state. At the end of the loop it always presents what is rendered onto the screen and plays the whole sound queue.
 
-The handlers take care of delegating to other functions and also manipulate the state when it's time, for instance from the crashed state back to the running state. The play.cpp module is where most of the action takes place, where we check if we should issue a new car, by how much all the cars should move, if two cars collide, etc.
+The handlers take care of delegating to other functions and also manipulate the state when it's time, for instance from the crashed state back to the running state. The `play.cpp` module is where most of the action takes place, where we check if we should issue a new car, by how much all the cars should move, if two cars collide, etc.
+
+The whole thing is build with SDL2 as an engine for input, graphics, sound and collision detection. 
 
 ## Todo
 
