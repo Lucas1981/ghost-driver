@@ -8,7 +8,9 @@ enum class GameStateType {
     READY,
     RUNNING,
     CRASHED,
-    GAME_OVER
+    GAME_OVER,
+    TIME_UP,
+    WIN
 };
 
 class GameState {
@@ -19,21 +21,23 @@ public:
     GameStateType getState() const;
     std::chrono::steady_clock::time_point getLastStateChange() const;
     double getTimeLeft() const;
-    double getDistanceTraveled() const;
+    double getDistanceLeft() const;
     double getSpeed() const;
     double getTimeSinceLastStateChange() const; // New method
+    void reduceDistanceLeft(double distanceTraveled);
+    void reduceTimeLeft(double elapsedTime);
 
     // Setters
     void setState(GameStateType newState);
     void setTimeLeft(double timeLeft);
-    void setDistanceTraveled(double distanceTraveled);
     void setSpeed(double speed);
+    void setDistanceLeft(double newDistanceLeft);
 
 private:
     GameStateType state;
     std::chrono::steady_clock::time_point lastStateChange;
     double timeLeft;
-    double distanceTraveled;
+    double distanceLeft;
     double speed;
 };
 

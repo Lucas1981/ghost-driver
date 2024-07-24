@@ -5,7 +5,6 @@
 using namespace Constants;
 
 const int Opponent::THRESHOLD = SCREEN_WIDTH + UNIT_SIZE;
-const int Opponent::SPEED = 320;
 
 // Define and initialize static members
 std::mt19937 Opponent::gen(std::random_device{}());

@@ -23,6 +23,14 @@ public:
 private:
     bool initialize();
     void cleanup();
+    void handleTitleScreenState();
+    void handleReadyState();
+    void handleRunningState();
+    void handleCrashedState();
+    void displayStatus();
+    void handleTimeUpState();
+    void handleWinState();
+    void reset();
 
     GameState gameState;
     Graphics graphics;

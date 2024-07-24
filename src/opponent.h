@@ -22,7 +22,7 @@ private:
     Clock* clock;  // Store the clock object as a private member
 
     static const int THRESHOLD;
-    static const int SPEED;
+    static constexpr int SPEED = 600;
     static std::mt19937 gen; // Random number generator
     static std::uniform_int_distribution<> dis; // Distribution for x coordinate
 

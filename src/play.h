@@ -23,8 +23,8 @@ private:
     void update();
     void render();
 
-    static const int ROAD_SPEED;
-
+    static constexpr double meterPerHourConvertor = 0.000277;
+    static constexpr double timeToNewOpponent = 0.24;
     Graphics& graphics;
     Clock& clock;
     SpriteSheet* spriteSheet;

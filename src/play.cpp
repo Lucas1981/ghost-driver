@@ -4,8 +4,6 @@
 #include "constants.h"
 #include "collision.h"
 
-const int Play::ROAD_SPEED = 256;
-
 Play::Play(
     Graphics& graphics,
     Clock& clock,
@@ -40,7 +38,7 @@ void Play::update() {
     createOpponentTimer += elapsedTime;
 
     // Add a new opponent every 300 ms
-    if (createOpponentTimer >= 0.3) {
+    if (createOpponentTimer >= timeToNewOpponent) {
         agents.push_back(new Opponent(graphics.getRenderer(), spriteSheet, &clock));
         createOpponentTimer = 0.0; // Reset the timer
     }
@@ -73,12 +71,22 @@ void Play::update() {
             if (!agent->isPlayer() && checkCollision(player, agent)) {
                 player->markAsCrashed();
                 agent->markAsCrashed();
+                gameState.setSpeed(0);
                 gameState.setState(GameStateType::CRASHED);
             }
         }
     }
 
-    offsetY = std::fmod(offsetY + UNIT_SIZE - (ROAD_SPEED * elapsedTime), UNIT_SIZE);
+    double speedTimesElapsedTime = gameState.getSpeed() * elapsedTime;
+    offsetY = std::fmod(offsetY + UNIT_SIZE - speedTimesElapsedTime, UNIT_SIZE);
+    // Calculate the total distance we just traversed.
+    // speed / hour * elapsedTime / meterPerHourConvertor
+    double distanceTraveled = speedTimesElapsedTime * meterPerHourConvertor;
+    gameState.reduceDistanceLeft(distanceTraveled);
+
+    if (gameState.getDistanceLeft() <= 0.0) {
+        gameState.setState(GameStateType::WIN);
+    }
 }
 
 void Play::render() {

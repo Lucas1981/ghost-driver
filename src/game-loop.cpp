@@ -1,6 +1,10 @@
 #include "game-loop.h"
 #include <iostream>
+#include <sstream>
+#include <cmath>
 #include "constants.h"
+
+using namespace Constants;
 
 GameLoop::GameLoop() : offsetX(32.0), offsetY(0.0), createOpponentTimer(0.0) {}
 
@@ -9,8 +13,6 @@ GameLoop::~GameLoop() {
 }
 
 void GameLoop::run() {
-    using namespace Constants;
-
     if (!initialize()) {
         std::cerr << "Failed to initialize!" << std::endl;
         return;
@@ -25,35 +27,108 @@ void GameLoop::run() {
                 std::cerr << "Failed to initialize!" << std::endl;
                 return;
             case GameStateType::TITLE_SCREEN:
-                if (input.isKeyHeld(SDL_SCANCODE_RETURN)) {
-                    gameState.setState(GameStateType::READY);
-                }
-                titleScreen.drawTitleScreen(graphics.getRenderer());
-                ui.renderText(graphics.getRenderer(), "press enter to start", SCREEN_WIDTH / 2, 300, UI::TextAlign::CENTER);
+                handleTitleScreenState();
                 break;
             case GameStateType::READY:
-                if (gameState.getTimeSinceLastStateChange() > 1) {
-                    gameState.setState(GameStateType::RUNNING);
-                }
-                play->run(false);
-                ui.renderText(graphics.getRenderer(), "get ready!", SCREEN_WIDTH / 2, 200, UI::TextAlign::CENTER);
+                handleReadyState();
                 break;
             case GameStateType::RUNNING:
-                play->run(true);
+                handleRunningState();
                 break;
             case GameStateType::CRASHED:
-                if (gameState.getTimeSinceLastStateChange() > 1) {
-                    play->resetStage();
-                    agents.clear();
-                    agents.push_back(new Player(graphics.getRenderer(), spriteSheet, &input, &clock));
-                    gameState.setState(GameStateType::READY);
-                }
-                play->run(false);
+                handleCrashedState();
+                break;
+            case GameStateType::TIME_UP:
+                handleTimeUpState();
+                break;
+            case GameStateType::WIN:
+                handleWinState();
                 break;
         }
 
         graphics.present();
     }
+}
+
+void GameLoop::handleTitleScreenState() {
+    if (input.isKeyHeld(SDL_SCANCODE_RETURN)) {
+        reset();
+        gameState.setTimeLeft(60.0);
+        gameState.setDistanceLeft(4.0);
+        gameState.setSpeed(0);
+        gameState.setState(GameStateType::READY);
+    }
+    titleScreen.drawTitleScreen(graphics.getRenderer());
+    ui.renderText(graphics.getRenderer(), "press enter to start", SCREEN_WIDTH / 2, 300, UI::TextAlign::CENTER);
+}
+
+void GameLoop::handleReadyState() {
+    if (gameState.getTimeSinceLastStateChange() > 1) {
+        gameState.setSpeed(255);
+        gameState.setState(GameStateType::RUNNING);
+    }
+    play->run(false);
+    displayStatus();
+    ui.renderText(graphics.getRenderer(), "get ready!", SCREEN_WIDTH / 2, 200, UI::TextAlign::CENTER);
+}
+
+void GameLoop::handleRunningState() {
+    gameState.reduceTimeLeft(clock.getElapsedTime());
+    if (gameState.getTimeLeft() <= 0) {
+        gameState.setTimeLeft(0);
+        gameState.setState(GameStateType::TIME_UP);
+    }
+    play->run(true);
+    displayStatus();
+}
+
+void GameLoop::handleCrashedState() {
+    gameState.reduceTimeLeft(clock.getElapsedTime());
+    if (gameState.getTimeSinceLastStateChange() > 1) {
+        reset();
+        gameState.setSpeed(255);
+        gameState.setState(GameStateType::RUNNING);
+    }
+    play->run(false);
+    displayStatus();
+}
+
+void GameLoop::handleTimeUpState() {
+    if (gameState.getTimeSinceLastStateChange() > 2) {
+        gameState.setState(GameStateType::TITLE_SCREEN);        
+    }
+    play->run(false);
+    displayStatus();
+    ui.renderText(graphics.getRenderer(), "Time's up! You lost!", SCREEN_WIDTH / 2, 200, UI::TextAlign::CENTER);
+}
+
+void GameLoop::handleWinState() {
+    if (gameState.getTimeSinceLastStateChange() > 2) {
+        gameState.setState(GameStateType::TITLE_SCREEN);        
+    }
+    play->run(false);
+    displayStatus();
+    ui.renderText(graphics.getRenderer(), "Congratulations! You win!", SCREEN_WIDTH / 2, 200, UI::TextAlign::CENTER);
+}
+
+void GameLoop::reset() {
+    play->resetStage();
+    agents.clear();
+    agents.push_back(new Player(graphics.getRenderer(), spriteSheet, &input, &clock));
+}
+
+void GameLoop::displayStatus() {
+    double roundedDownDistanceLeft = std::ceil(gameState.getDistanceLeft() * 10) / 10;
+    double nonNegativeDistanceLeft = std::max(0.0, roundedDownDistanceLeft);
+    std::stringstream speedString;
+    std::stringstream timeLeftString;
+    std::stringstream distanceLeftString;
+    speedString << "speed: " << gameState.getSpeed(); 
+    timeLeftString << "time: " << (int)gameState.getTimeLeft();
+    distanceLeftString << "dist: " << nonNegativeDistanceLeft;
+    ui.renderText(graphics.getRenderer(), speedString.str(), 0, 400, UI::TextAlign::LEFT);
+    ui.renderText(graphics.getRenderer(), timeLeftString.str(), 0, 420, UI::TextAlign::LEFT);
+    ui.renderText(graphics.getRenderer(), distanceLeftString.str(), 0, 440, UI::TextAlign::LEFT);
 }
 
 bool GameLoop::initialize() {

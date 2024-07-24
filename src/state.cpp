@@ -4,7 +4,7 @@ GameState::GameState()
     : state(GameStateType::TITLE_SCREEN),
       lastStateChange(std::chrono::steady_clock::now()),
       timeLeft(0.0),
-      distanceTraveled(0.0),
+      distanceLeft(0.0),
       speed(0.0) {}
 
 GameStateType GameState::getState() const {
@@ -19,8 +19,8 @@ double GameState::getTimeLeft() const {
     return timeLeft;
 }
 
-double GameState::getDistanceTraveled() const {
-    return distanceTraveled;
+double GameState::getDistanceLeft() const {
+    return distanceLeft;
 }
 
 double GameState::getSpeed() const {
@@ -38,12 +38,20 @@ void GameState::setState(GameStateType newState) {
     lastStateChange = std::chrono::steady_clock::now();
 }
 
+void GameState::setDistanceLeft(double newDistanceLeft) {
+    distanceLeft = newDistanceLeft;
+}
+
 void GameState::setTimeLeft(double newTimeLeft) {
     timeLeft = newTimeLeft;
 }
 
-void GameState::setDistanceTraveled(double newDistanceTraveled) {
-    distanceTraveled = newDistanceTraveled;
+void GameState::reduceDistanceLeft(double distanceTraveled) {
+    distanceLeft -= distanceTraveled;
+}
+
+void GameState::reduceTimeLeft(double elapsedTime) {
+    timeLeft -= elapsedTime;
 }
 
 void GameState::setSpeed(double newSpeed) {

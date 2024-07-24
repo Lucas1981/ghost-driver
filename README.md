@@ -9,13 +9,13 @@ My challenge was to have a scrolling background. The objective will be pretty si
 - [x] Add collision
 - [x] Add title screen
 - [x] Add UI
-- [ ] Expand game states:
+- [x] Expand game states:
     - [x] TITLE
     - [x] READY
     - [x] RUNNING
     - [x] CRASHED
-    - [ ] LOST
-    - [ ] WON
-- [ ] Add timer
+    - [x] LOST
+    - [x] WON
+- [x] Add timer
 - [ ] Add sounds
 
