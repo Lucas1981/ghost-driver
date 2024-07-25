@@ -12,7 +12,7 @@ So, the main.cpp file is just the entry point that kicks everything into gear. T
 
 The handlers take care of delegating to other functions and also manipulate the state when it's time, for instance from the crashed state back to the running state. The `play.cpp` module is where most of the action takes place, where we check if we should issue a new car, by how much all the cars should move, if two cars collide, etc.
 
-The whole thing is build with SDL2 as an engine for input, graphics, sound and collision detection. 
+The whole thing is built with SDL2 as an engine for input, graphics, sound and collision detection.
 
 ## Todo
 

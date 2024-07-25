@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# For development
+
+# Install cmake
+brew cmake;
+
+# Install IWYU
+brew include-what-you-use;
+
+# For the product
+
 # Update Homebrew
 brew update
 
