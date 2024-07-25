@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Update Homebrew
+brew update
+
 # For development
 
 # Install cmake
@@ -9,9 +12,6 @@ brew cmake;
 brew include-what-you-use;
 
 # For the product
-
-# Update Homebrew
-brew update
 
 # Install SDL2
 brew install sdl2
