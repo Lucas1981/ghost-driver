@@ -12,20 +12,20 @@
 class SpriteSheet;
 
 Play::Play(
-    Graphics& graphics,
-    Clock& clock,
-    SpriteSheet* spriteSheet,
-    Grid* grid,
-    std::list<Agent*>& agents,
-    GameState& gameState,
-    Sound& sound
-) : graphics(graphics),
-    clock(clock),
-    spriteSheet(spriteSheet),
-    grid(grid),
-    agents(agents),
-    gameState(gameState),
-    sound(sound),
+    Graphics& _graphics,
+    Clock& _clock,
+    SpriteSheet* _spriteSheet,
+    Grid* _grid,
+    std::list<Agent*>& _agents,
+    GameState& _gameState,
+    Sound& _sound
+) : graphics(_graphics),
+    clock(_clock),
+    spriteSheet(_spriteSheet),
+    grid(_grid),
+    agents(_agents),
+    gameState(_gameState),
+    sound(_sound),
     createOpponentTimer(0.0),
     offsetX(32.0),
     offsetY(0.0) {}

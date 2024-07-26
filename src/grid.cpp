@@ -7,8 +7,8 @@
 
 using namespace Constants;
 
-Grid::Grid(const std::string& filePath, Graphics& graphics, SpriteSheet& spriteSheet)
-    : filePath(filePath), graphics(graphics), spriteSheet(spriteSheet) {}
+Grid::Grid(const std::string& _filePath, Graphics& _graphics, SpriteSheet& _spriteSheet)
+    : filePath(_filePath), graphics(_graphics), spriteSheet(_spriteSheet) {}
 
 bool Grid::loadGrid() {
     std::ifstream file(filePath);

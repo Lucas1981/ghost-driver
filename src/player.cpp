@@ -15,8 +15,8 @@ const int Player::UPPER_BOUND = 0;
 const int Player::LOWER_BOUND = SCREEN_HEIGHT - UNIT_SIZE;
 const int Player::SPEED = 300;
 
-Player::Player(SpriteSheet* spriteSheet, Input* input, Clock* clock)
-    : input(input), spriteSheet(spriteSheet), clock(clock) {
+Player::Player(SpriteSheet* _spriteSheet, Input* _input, Clock* _clock)
+    : input(_input), spriteSheet(_spriteSheet), clock(_clock) {
     x = SCREEN_WIDTH / 2;
     y = SCREEN_HEIGHT / 2;
     state = AgentState::ALIVE;
